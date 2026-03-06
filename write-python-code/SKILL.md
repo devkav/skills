@@ -45,5 +45,5 @@ line is written.
 4. **Use pathlib instead of os**: The `pathlib` library should be almost always used when dealing with paths. When dealing with paths, `pathlib` should always be used over the python
 `os` library. 
 
-5. **Use typer and rich console for CLIs**: Use `typer` to build CLI tools. If the user is interacting directly with stdout, use the `rich` console library to print. Otherwise, using
-the default python print is fine.
+5. **Use typer and rich console for CLIs**: Use `typer` to build CLI tools. Use `rich.console.Console` for output in user-facing applications like CLIs. The built-in `print()` is
+fine for debug messages, basic development scripts, and non-interactive output.
