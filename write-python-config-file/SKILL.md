@@ -32,19 +32,16 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 class Config:
-    # Slurm paths
-    SLURM_PATH_PREFIX = "/proj/emu/"
-    SLURM_BIN_SUFFIX = "/wrapper/bin/"
+    # Database
+    DB_HOST = os.getenv("DB_HOST", "localhost")
+    DB_PORT = 5432
+    DB_NAME = "app_db"
+    DB_URL = f"postgresql://{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-    SCONTROL_NAME = "scontrol"
-    SACCTMGR_NAME = "sacctmgr"
-
-    # Elasticsearch
-    ELASTICSEARCH_URL = "http://emu-metrics:9200"
-    ELASTICSEARCH_RESV_URL = f"{ELASTICSEARCH_URL}/slurmdb_reservations/_search"
-
-    ELASTIC_RO_USER = "hwemu-user"
-    ELASTIC_RO_KEY = os.getenv("ELASTIC_RO_KEY", "")
+    # API
+    API_BASE_URL = "https://api.example.com/v1"
+    API_KEY = os.getenv("API_KEY", "")
+    API_TIMEOUT = 30
 
     # Logging
     LOG_DIR = BASE_DIR.joinpath("logs")
